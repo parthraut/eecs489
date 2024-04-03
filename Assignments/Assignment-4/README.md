@@ -223,12 +223,12 @@ The routing table in the stub code is read on from a file (default filename `rta
 You will need to add ARP requests and packets waiting on responses to those ARP requests to the ARP request queue. When an ARP response arrives, you will have to remove the ARP request from the queue and place it onto the ARP cache, forwarding any packets that were waiting on that ARP request. Pseudocode for these operations is provided in `sr_arpcache.h`. The base code already creates a thread that times out ARP cache entries 15 seconds after they are added for you. You must fill out the `sr_arpcache_sweepreqs()` function in `sr_arpcache.c` that gets called every second to iterate through the ARP request queue and re-send ARP requests if necessary. Psuedocode for this is provided in `sr_arpcache.h`.
 
 #### Protocol Headers (`sr_protocol.h`)
-Within the router framework you will be dealing directly with raw Ethernet packets. The stub code itself provides some data structures in `sr_protocols.h` which you may use to manipulate headers easily. There are a number of resources which describe the protocol headers in detail. Network Sorcery's RFC Sourcebook provides a condensed reference to the packet formats you'll be dealing with:
+Within the router framework you will be dealing directly with raw Ethernet packets. The stub code itself provides some data structures in `sr_protocols.h` which you may use to manipulate headers easily. There are a number of resources which describe the protocol headers in detail. In particular, the following RFCs may be useful to learn about our protocol formats:
 
-* [Ethernet](http://www.networksorcery.com/enp/protocol/ethernet.htm)
-* [IP](http://www.networksorcery.com/enp/protocol/ip.htm)
-* [ICMP](http://www.networksorcery.com/enp/protocol/icmp.htm)
-* [ARP](http://www.networksorcery.com/enp/protocol/arp.htm)
+* [Ethernet](https://datatracker.ietf.org/doc/html/rfc894#ref-2)
+* [IP](https://datatracker.ietf.org/doc/html/rfc791#section-3.1)
+* [ICMP](https://datatracker.ietf.org/doc/html/rfc792)
+* [ARP](https://www.rfc-editor.org/rfc/rfc6747#section-2.1)
 
 <a name="requirements"></a>
 ## Requirements
